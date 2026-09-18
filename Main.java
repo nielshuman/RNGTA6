@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         // If argument received we draw a map to make research on RNG predictivity. (How
@@ -25,14 +27,12 @@ public class Main {
                 to = sc.nextLong();
                 sc.nextLine(); // \n is in Scanner's buffer - we need to remove it
                 if (from == to) {
-                    System.out.println(
-                            ANSI_RED + "ERROR: boundaries can not be same numbers. Please, type again." + ANSI_RESET);
+                    System.out.println(ANSI.RED + "ERROR: boundaries can not be same numbers. Please, type again." + ANSI.RESET);
                     continue;
                 }
                 if (from > to) {
-                    System.out.println(
-                            ANSI_RED + "ERROR: Lower boundary must be less than higher boundary. Please, type again."
-                                    + ANSI_RESET);
+                    System.out.println(ANSI.RED + "ERROR: Lower boundary must be less than higher boundary. Please, type again."
+                            + ANSI.RESET);
                     continue;
                 }
                 System.out.println("Boundaries applied (from %d to %d)".formatted(from, to));
@@ -41,8 +41,8 @@ public class Main {
                         "Generating a new value using previous boundaries (from %d to %d)!".formatted(from, to));
             }
             // Printing a random value
-            System.out.println(ANSI_BLUE + "Generated: "
-                    + Generator.applyBoundaries(Generator.getRandomValue(), from, to) + ANSI_RESET);
+            System.out.println(ANSI.BLUE + "Generated: "
+                    + Generator.applyBoundaries(Generator.getRandomValue(), from, to) + ANSI.RESET);
             // Do we need to update boundaries (or to exit) (asking user)
             System.out.println("Do you want to update the boundaries you typed (y/n)? To exit type 'exit'");
             String asnwer = sc.nextLine();

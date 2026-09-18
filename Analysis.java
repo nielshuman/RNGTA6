@@ -8,12 +8,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Analysis {
-    // ANSI COLORS (for terminal)
-    private static final String ANSI_RESET = "\u001B[0m";
-    private static final String ANSI_RED = "\u001B[31m";
-    private static final String ANSI_YELLOW = "\u001B[33m";
-    private static final String ANSI_BLUE = "\u001B[34m";
-
     private static final int MAP_SIZE = 1000;
 
     public static void showMap(int strength) {
@@ -77,11 +71,11 @@ public class Analysis {
                 to = sc.nextLong();
                 sc.nextLine(); // \n is in Scanner's buffer - we need to remove it
                 if (from == to) {
-                    System.out.println(ANSI_RED + "ERROR: boundaries can not be same numbers. Please, type again." + ANSI_RESET);
+                    System.out.println(ANSI.RED + "ERROR: boundaries can not be same numbers. Please, type again." + ANSI.RESET);
                     continue;
                 }
                 if (from > to) {
-                    System.out.println(ANSI_RED + "ERROR: Lower boundary must be less than higher boundary. Please, type again." + ANSI_RESET);
+                    System.out.println(ANSI.RED + "ERROR: Lower boundary must be less than higher boundary. Please, type again." + ANSI.RESET);
                     continue;
                 }
                 System.out.println("Boundaries applied (from %d to %d)".formatted(from, to));
@@ -89,7 +83,7 @@ public class Analysis {
                 System.out.println("Generating a new value using previous boundaries (from %d to %d)!".formatted(from, to));
             }
             // Printing a random value
-            System.out.println(ANSI_BLUE + "Generated: " + Generator.applyBoundaries(Generator.getRandomValue(), from, to) + ANSI_RESET);
+            System.out.println(ANSI.BLUE + "Generated: " + Generator.applyBoundaries(Generator.getRandomValue(), from, to) + ANSI.RESET);
             // Do we need to update boundaries (or to exit) (asking user)
             System.out.println("Do you want to update the boundaries you typed (y/n)? To exit type 'exit'");
             String asnwer = sc.nextLine();

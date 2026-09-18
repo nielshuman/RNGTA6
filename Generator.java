@@ -1,6 +1,6 @@
 
 public class Generator {
-    public static long seed = 1202;
+    public static long seed = obtainSeed.byMixedMethods();
 
     private static long generateRandomNumber(int times, long seed) 
     {

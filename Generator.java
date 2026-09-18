@@ -1,14 +1,14 @@
-import java.util.Scanner;
 
 public class Generator {
     private static long seed = 1202;
 
-    private static long generateRandomNumber(int times, long seed) {
+    private static long generateRandomNumber(int times, long seed) 
+    {
         if (times == 0) return seed;
-        int multiplier = 21212;
-        int increment = 12196;
-        int mod = 1000000007;
-        return generateRandomNumber(times - 1, (multiplier * seed + increment) % mod); // TODO fix negatives
+        long multiplier = 21212; //keep it under int range to avoid overflow
+        long increment = 12196; //keep it under int range to avoid overflow
+        long mod = 1000000007; //prime number, keep it under int range to avoid overflow
+        return generateRandomNumber(times - 1, (multiplier * seed + increment) % mod);
     }
 
     public static long getRandomValue() {

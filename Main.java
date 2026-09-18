@@ -44,13 +44,13 @@ public class Main {
             System.out.println(ANSI.BLUE + "Generated: "
                     + Generator.applyBoundaries(Generator.getRandomValue(), from, to) + ANSI.RESET);
             // Do we need to update boundaries (or to exit) (asking user)
-            System.out.println("Do you want to update the boundaries you typed (y/n)? To exit type 'exit'");
-            String asnwer = sc.nextLine();
-            if (asnwer.equalsIgnoreCase("exit")) {
+            System.out.println("Do you want to update the boundaries you typed (y/N)? To exit type 'exit'");
+            String answer = sc.nextLine();
+            if (answer.equalsIgnoreCase("exit")) {
                 System.out.println("Bye!");
                 break;
             }
-            savePreviousBoundaries = asnwer.equalsIgnoreCase("n");
+            savePreviousBoundaries = answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("");
         }
         sc.close();
     }

@@ -1,6 +1,6 @@
 
 public class Generator {
-    private static long seed = 1202;
+    public static long seed = 1202;
 
     private static long generateRandomNumber(int times, long seed) 
     {

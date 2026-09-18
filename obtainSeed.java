@@ -1,21 +1,21 @@
 public class obtainSeed {
-    public static int byTime() {
-        return (int) System.currentTimeMillis();
+    public static long byTime() {
+        return (long) System.currentTimeMillis();
     }
 
-    public static int byPID() {
-        return (int) ProcessHandle.current().pid();
+    public static long byPID() {
+        return (long) ProcessHandle.current().pid();
     }
 
-    public static int byFreeMemory() {
-        return (int) Runtime.getRuntime().freeMemory();
+    public static long byFreeMemory() {
+        return (long) Runtime.getRuntime().freeMemory();
     }
 
-    public static int byMemoryHash() {
-        return (int) System.identityHashCode(new Object());
+    public static long byMemoryHash() {
+        return (long) System.identityHashCode(new Object());
     }
 
-    public static int byMixedMethods() {
+    public static long byMixedMethods() {
         return byTime() ^ byPID() ^ byFreeMemory() ^ byMemoryHash();
     }
 }

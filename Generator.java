@@ -27,15 +27,7 @@ public class Generator {
         return (int) applyBoundaries(getRandomValue(),a,b);
     }
 
-    public static void main(String[] args) {
-        // If argument received we draw a map to make research on RNG predictivity. (How random is your RNG?)
-        if (args.length > 0 && args[0].equalsIgnoreCase("map")) {
-            Additional.showMap(10000000);
-            System.exit(0);
-        }
-        System.out.println("Welcome!");
-        Additional.generatingLoop();
-    }
+
 
     /**
      * Maps the value given to the specific boundaries

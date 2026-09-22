@@ -15,6 +15,7 @@ public class Main {
                 4. By PID
                 5. By Free Memory
                 6. By Memory Hash
+                7. By Camera Photo (browser)
                 Or analyse algorithm using:
                 /map - creates a heatmap
                 /count - shows most frequently repeated numbers""");
@@ -31,6 +32,15 @@ public class Main {
             case "4" -> Generator.seed = obtainSeed.byPID();
             case "5" -> Generator.seed = obtainSeed.byFreeMemory();
             case "6" -> Generator.seed = obtainSeed.byMemoryHash();
+            case "7" -> {
+                try {
+                    Generator.seed = CameraSeed.byCamera();
+                } catch (IllegalStateException e) {
+                    System.out.println("Camera seed: " + e.getMessage());
+                    greeting();
+                    return;
+                }
+            }
             case "/map" -> callAnalysis(0);
             case "/count" -> callAnalysis(1);
             default -> {

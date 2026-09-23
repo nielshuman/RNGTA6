@@ -47,7 +47,7 @@ public class Main {
 
     private static void callAnalysis(int mode) {
         // TODO: collect this stuff using Scanner
-        int strength = 100000;
+        int strength = 2*1000000000;//highest reasonable number
         int mapSize = 75;
         int minBoundary = 0;
         int maxBoundary = 255;

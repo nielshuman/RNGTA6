@@ -17,8 +17,8 @@ public class Analysis {
         long timeStart = System.currentTimeMillis();
         // Filling the map to display
         for (int i = 0; i <= strength; i++) {
-            int x = (int) Generator.applyBoundaries(Generator.getRandomValue(), 0, MAP_SIZE);
-            int y = (int) Generator.applyBoundaries(Generator.getRandomValue(), 0, MAP_SIZE);
+            int x = (int) (Generator.getRandomValue() * MAP_SIZE / Generator.mod); // Map to MAP_SIZE
+            int y = (int) (Generator.getRandomValue() * MAP_SIZE / Generator.mod);
             world[x][y] += 1;
         }
         System.out.printf("Success! (%d ms)%n", System.currentTimeMillis() - timeStart);

@@ -1,13 +1,13 @@
 
 public class Generator {
     public static long seed = obtainSeed.byMixedMethods();
+    static long multiplier = 1103515245; //keep it under int range to avoid overflow
+    static long increment = 12345; //keep it under int range to avoid overflow
+    static long mod = 2147483648L; //prime number, keep it under int range to avoid overflow
 
     private static long generateRandomNumber(int times, long seed) 
     {
         if (times == 0) return seed;
-        long multiplier = 21212; //keep it under int range to avoid overflow
-        long increment = 12196; //keep it under int range to avoid overflow
-        long mod = 1000000007; //prime number, keep it under int range to avoid overflow
         return generateRandomNumber(times - 1, (multiplier * seed + increment) % mod);
     }
 

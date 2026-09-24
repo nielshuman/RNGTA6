@@ -3,10 +3,10 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Welcome!");
-        greeting();
+        menu();
     }
 
-    public static void greeting() {
+    public static void menu() {
         System.out.println("""
                 Choose seed:
                 1 (default). By TIME, PID, FREE MEM and MEM HASH
@@ -15,6 +15,7 @@ public class Main {
                 4. By PID
                 5. By Free Memory
                 6. By Memory Hash
+                7 (external) By Laser Quantum Fluctuationss
                 Or analyse algorithm using:
                 /map - creates a heatmap
                 /count - shows most frequently repeated numbers""");
@@ -25,12 +26,20 @@ public class Main {
             case "2" -> {
                 System.out.print("Type your seed: ");
                 Generator.seed = sc.nextLong();
-                sc.nextLine(); // \n is in Scanner's buffer - we need to remove it
+                sc.nextLine(); // \n in scanner's buffer
             }
             case "3" -> Generator.seed = obtainSeed.byTime();
             case "4" -> Generator.seed = obtainSeed.byPID();
             case "5" -> Generator.seed = obtainSeed.byFreeMemory();
             case "6" -> Generator.seed = obtainSeed.byMemoryHash();
+            case "7" -> {
+                try {
+                    Generator.seed = additionalObtainSeed.byLaserQuantumFluctuation();
+                } catch (Exception e) {
+                    System.out.println("Unable to obtain a seed from laser quantum fluctuations: " + e.getMessage());
+                    return;
+                }
+            }
             case "/map" -> callAnalysis(0);
             case "/count" -> callAnalysis(1);
             default -> {
@@ -38,10 +47,7 @@ public class Main {
                 System.exit(1);
             }
         }
-        System.out.println("Seed applied: " + Generator.seed+"\nDo you want to continue? (Y/N): ");
-        if (sc.nextLine().equalsIgnoreCase("n")) {
-            greeting();
-        }
+        System.out.println("Seed applied: " + Generator.seed);
         generatingLoop();
     }
 
@@ -61,7 +67,7 @@ public class Main {
                 break;
             }
         }
-        greeting();
+        menu();
     }
 
     public static void generatingLoop() {

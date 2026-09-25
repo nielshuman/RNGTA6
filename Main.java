@@ -52,9 +52,8 @@ public class Main {
     }
 
     private static void callAnalysis(int mode) {
-        // TODO: collect this stuff using Scanner
         int strength = 100000;
-        int mapSize = 400;
+        int mapSize = 200;
         int minBoundary = 0;
         int maxBoundary = 255;
         switch (mode) {

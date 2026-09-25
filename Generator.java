@@ -1,12 +1,11 @@
 
 public class Generator {
     public static long seed = obtainSeed.byMixedMethods();
-    static long multiplier = 1103515245; //keep it under int range to avoid overflow
-    static long increment = 0; //keep it under int range to avoid overflow
-    static long mod = 2147483648L - 1; //fixed prime number
+    public static long multiplier = 1103515245; //keep it under int range to avoid overflow
+    public static long increment = 0; //keep it under int range to avoid overflow
+    public static long mod = 2147483648L - 1; //fixed prime number
 
-    private static long generateRandomNumber(int times, long seed) 
-    {
+    private static long generateRandomNumber(int times, long seed) {
         if (times == 0) return seed;
         return generateRandomNumber(times - 1, (multiplier * seed + increment) % mod);
     }
@@ -19,14 +18,14 @@ public class Generator {
 
     /**
      * It is stated in the project manual that we need this function
+     *
      * @param a lower boundary
      * @param b higher boundary (exclusive)
      * @return a (not really)random number
      */
-    public static int getRandom(int a, int b){
-        return (int) applyBoundaries(getRandomValue(),a,b);
+    public static int getRandom(int a, int b) {
+        return (int) applyBoundaries(getRandomValue(), a, b);
     }
-
 
 
     /**
@@ -40,9 +39,7 @@ public class Generator {
     public static long applyBoundaries(long num, long from, long to) {
         if (from >= to)
             throw new IllegalArgumentException("Cannot apply boundaries because lower boundary is higher or equal to higher boundary");
-        long fromZeroDistance = num % (to - from);
-        if (fromZeroDistance < 0) // Can happen if num is negative
-            fromZeroDistance += (to - from); // Shifting to required boundaries
-        return from + fromZeroDistance;
+        num = Math.floorMod(num, mod);
+        return from + num * (to - from) / mod;
     }
 }

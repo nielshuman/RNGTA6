@@ -66,10 +66,10 @@ public class Analysis {
             int randomNumber = Generator.getRandom(min, max);
             randomNumbers.put(randomNumber, randomNumbers.getOrDefault(randomNumber, 0) + 1);
         }
-        System.out.println("The most frequently repeated numbers (order:asc):");
+        System.out.println("The most frequently repeated numbers (order:asc, format: number, value):");
         randomNumbers.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.naturalOrder())).forEach(entry -> {
             if (entry.getValue() != 1)
-                System.out.printf("Num %d: %d times\n", entry.getKey(), entry.getValue());
+                System.out.println(entry.getKey() + " " + entry.getValue());
         });
     }
 }
